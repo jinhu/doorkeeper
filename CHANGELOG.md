@@ -1,21 +1,45 @@
 # Changelog
 
-## 1.0.0 (Unreleased)
+## 1.1.0
+
+- enhancements
+  - [#336] mongoid4 support.
+  - [#372] Allow users to set ActiveRecord table_name_prefix/suffix options
+- internals
+  - [#343] separate OAuth's admin and user end-point to different layouts, upgrade theme to Bootstrap 3.1.
+  - [#348] Move render_options in filter after `@error` has been set
+
+## 1.0.0
 
 - bug (spec)
   - [#228] token response `expires_in` value is now in seconds, relative to
     request time
   - [#296] client is optional for password grant type.
-    [#319] when client credentials present on password grant type, they are validated
+  - [#319] If client credentials are present on password grant type they are validated
+  - [#326] If client credentials are present in refresh token they are validated
+  - [#326] If authenticated client does not match original client that
+    obtained a refresh token it responds `invalid_grant` instead of
+    `invalid_client`. Previous usage was invalid according to Section 5.2 of
+    the spec.
+  - [#329] access tokens' `scopes` string wa being compared against
+    `default_scopes` symbols, always unauthorizing.
+  - [#318] Include "WWW-Authenticate" header with Unauthorized responses
 - enhancements
   - [#293] Adds ActionController::Instrumentation in TokensController
+  - [#298] Support for multiple redirect_uris added.
   - [#313] `AccessToken.revoke_all_for` actually revokes all non-revoked
     tokens for an application/owner instead of deleting them.
-    [@bryanrite](https://github.com/bryanrite)
+  - [#333] Rails 4.1 support
 - internals
   - Removes jQuery dependency [fixes #300] [PR #312 is related]
   - [#294] Client uid and secret will be generated only if not present.
+  - [#316] Test warnings addressed.
+  - [#338] Rspec 3 syntax.
 
+## 0.7.4
+
+- bug
+  - Symbols instead of strings for user input.
 
 ## 0.7.3
 

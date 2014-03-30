@@ -64,4 +64,12 @@ Doorkeeper.configure do
   # skip_authorization do |resource_owner, client|
   #   client.superapp? or resource_owner.admin?
   # end
+
+  # WWW-Authenticate Realm (default "Doorkeeper").
+  # realm "Doorkeeper"
+
+  # Allow dynamic query parameters (disabled by default)
+  # Some applications require dynamic query parameters on their request_uri
+  # set to true if you want this to be allowed
+  # wildcard_redirect_uri false
 end

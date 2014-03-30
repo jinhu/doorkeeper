@@ -5,7 +5,7 @@ require "sprockets/railtie"
 
 Bundler.require :default
 
-orm = if [:mongoid2, :mongoid3].include?(DOORKEEPER_ORM)
+orm = if [:mongoid2, :mongoid3, :mongoid4].include?(DOORKEEPER_ORM)
   Mongoid.load!(File.join(File.dirname(File.expand_path(__FILE__)), "#{DOORKEEPER_ORM}.yml"))
   :mongoid
 else
@@ -19,9 +19,6 @@ module Dummy
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-
-    # Custom directories with classes and modules you want to be autoloadable.
-    # config.autoload_paths += %W(#{config.root}/extras)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
